@@ -1,0 +1,17 @@
+{
+  "name": "panel_admin_odonto_api_documentation",
+  "version": "1.0.0",
+  "description": "ApiBlueprint-based documentation package (more info http://apiblueprint.org).",
+  "main": "compile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Everton Paula <everton.projetos@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "aglio": "^2.0.0",
+    "browser-sync": "^2.9.2",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0"
+  }
+}

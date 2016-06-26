@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Laravel\Lumen\Auth\Authorizable;
@@ -13,6 +13,8 @@ class User extends Model implements
     AuthorizableContract
 {
     use Authenticatable, Authorizable;
+
+	 protected $table = "users";
 
     /**
      * The attributes that are mass assignable.
