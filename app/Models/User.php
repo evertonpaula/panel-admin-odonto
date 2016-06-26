@@ -22,7 +22,7 @@ class User extends Model implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'clinic_id'
     ];
 
     /**
@@ -33,4 +33,9 @@ class User extends Model implements
     protected $hidden = [
         'password',
     ];
+
+	 public function clinic()
+	 {
+		 return $this->belongsTo('App\Models\Clinic', 'id', 'clinic_id');
+	 }
 }

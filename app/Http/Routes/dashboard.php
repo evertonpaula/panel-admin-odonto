@@ -1,5 +1,6 @@
 <?php
 
-$app->get('dashboard', function () use ($app) {
-    return response()->json(['user' => 'admin']);
+$app->get('dashboard', function () {
+	$person = \App\Models\Tenant\Person::find(1);
+	return response()->json($person);
 });

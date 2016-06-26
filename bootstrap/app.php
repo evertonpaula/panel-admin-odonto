@@ -60,13 +60,14 @@ $app->singleton(
 */
 
 $app->middleware([
-	//App\Http\Middleware\ExampleMiddleware::class,
 	\LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class
 ]);
 
 $app->routeMiddleware([
 	//'auth' => App\Http\Middleware\Authenticate::class,
+	'oauth-setdb' => \App\Http\Middleware\OauthPasswordMiddleware::class,
 	'check-authorization-params' => \LucaDegasperi\OAuth2Server\Middleware\CheckAuthCodeRequestMiddleware::class,
+	'csrf' => \Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
 	'oauth' => \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware::class,
 	'oauth-client' => \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware::class,
 	'oauth-user' => \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware::class

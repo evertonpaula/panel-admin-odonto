@@ -13,6 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+		 //Helpers
+		 $this->app->singleton(\App\Helpers\ClientConnected::class, function(){
+			  return new \App\Helpers\ClientConnected();
+		 });
+
     }
 }

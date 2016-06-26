@@ -45,6 +45,26 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+		if ( env('APP_DEBUG') && env('APP_ENV') != 'production' ) {
+			return parent::render($request, $e);
+		}
+
+		if ( $e instanceof HttpExceptionInterface
+			|| $e instanceof MethodNotAllowedHttpException
+			|| $e instanceof NotFoundHttpException ) {
+
+				if ($e->getStatusCode() == 404 || $e->getStatusCode() == 405 ) {
+					return $this->response( false, 'Not found.' );
+				}
+		}
+
+		$message = 'Error.';
+
+		if ( env('APP_DEBUG') ) {
+			$message = $e->getMessage();
+		}
+
+		// returns a JSON object complying with the API Response format/content.
+		return $this->response(false, $message);
     }
 }

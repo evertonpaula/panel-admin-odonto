@@ -11,9 +11,18 @@
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
+$factory->define(App\Models\Clinic::class, function ($faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'name' => 'Odontopaiva',
+        'domain' => 'https://www.odontopaiva.com.br',
+    ];
+});
+
+$factory->define(App\Models\User::class, function ($faker) {
+    return [
+        'name' => 'Tom',
+        'email' => 'tom@tom.com',
+		  'password' => \Illuminate\Support\Facades\Hash::make('asdfasdf'),
+		  'clinic_id' => 1
     ];
 });
